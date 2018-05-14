@@ -1,10 +1,10 @@
-Webpack 4 boilerplate
+Recipes app
 ===========
-Webpack3 boilerplate with Babel, SCSS, lodash.
+Recipes js app with css-grid (not ready yet)
 
 ##  EZ Setup
-1. `git clone git@github.com:fromtexas/webpack4-boilerplate.git`
-2. `cd webpack4-boilerplate`
+1. `git clone git@github.com:fromtexas/recipes-app-with-css-grid.git`
+2. `cd recipes-app-with-css-grid`
 3. `npm install`
 
 ## Development
