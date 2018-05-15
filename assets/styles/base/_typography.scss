@@ -1,0 +1,34 @@
+.header {
+    grid-area: head;
+    background-color: $grey-light;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+
+    &__logo{
+        margin-left: 4rem;
+        height: 4.5rem;
+        display: block;
+    }
+}
+
+.heading-2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $orange;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    transform: skewY(-3deg); 
+}
+  
+.copyright {
+    color: $grey-light;
+    font-size: 1.2rem;
+    margin-top: auto; 
+}
+  
+.link:link,
+.link:visited {
+    color: $grey-light; 
+}

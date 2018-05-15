@@ -1,3 +1,14 @@
 @import './abstracts/variables';
 @import './abstracts/mixins';
 
+@import './base/base';
+@import './base/typography';
+@import './base/animations';
+
+@import './temp';
+
+@import './components/btn';
+@import './components/container';
+@import './components/loader';
+@import './components/search';
+@import './components/likesAndResults';
