@@ -5,10 +5,12 @@
 @import './base/typography';
 @import './base/animations';
 
-@import './temp';
+@import './layout/container';
+
 
 @import './components/btn';
-@import './components/container';
 @import './components/loader';
 @import './components/search';
 @import './components/likesAndResults';
+@import './components/recipe';
+@import './components/shopping';

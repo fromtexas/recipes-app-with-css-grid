@@ -1,0 +1,74 @@
+.shopping {
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column; 
+
+    &__list {
+        list-style: none;
+        max-height: 77rem;
+        overflow-y: scroll; 
+    }
+
+    &__item {
+        display: flex;
+        align-items: flex-start;
+        padding: 1.3rem 0;
+        border-bottom: 1px solid $grey-light;
+        position: relative; 
+ 
+        &:hover .shopping__delete {
+            opacity: 1;
+            visibility: visible; 
+        }
+    }
+
+    &__count {
+        flex: 0 0 7.5rem;
+        padding: .4rem .5rem;
+        border: 1px solid $grey-light;
+        border-radius: 3px;
+        margin-right: 2rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between; 
+    }
+
+    &__count input {
+        color: inherit;
+        font-family: inherit;
+        font-size: 1.2rem;
+        text-align: center;
+        border: none;
+        width: 3.7rem;
+        border-radius: 3px; 
+
+        &:focus{
+            outline: none;
+            background-color: $grey-light;
+        }
+    }
+
+    &__count p {
+        font-size: 1.2rem; 
+    }
+
+    &__description {
+        flex: 1;
+        font-size: 1.3rem;
+        margin-top: .4rem;
+        margin-right: 1.5rem; 
+    }
+
+    &__delete {
+        margin-top: .5rem;
+        position: absolute;
+        right: 0;
+        background-image: linear-gradient(to right, transparent 0%, $white 40%, $white 100%);
+        width: 3.75rem;
+        padding-left: 2rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .5s; 
+    }
+
+}
