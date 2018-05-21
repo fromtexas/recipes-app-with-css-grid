@@ -4,9 +4,13 @@ import {elements, renderLoader, clearLoader} from './views/base';
 import * as searchView from './views/searchView';
 
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 
 //global state of the app
 const state = {};
+
+
+//search controller
 
 const controlSearch = async () => {
     //1. get query of view
@@ -35,4 +39,17 @@ elements.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
+
+elements.searchResPages.addEventListener('click', e => {
+    e.preventDefault();
+    const btn = e.target.closest('.btn-inline');
+    if(btn){
+        const goToPage = parseInt(btn.dataset.goto);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
+    }
+});
+
+//recipe controller
+
 
