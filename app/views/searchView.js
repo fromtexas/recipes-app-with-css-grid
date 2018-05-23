@@ -1,5 +1,6 @@
 import {elements} from './base';
 
+
 export const getInput = () => elements.searchInput.value;
 
 export const clearInput = () => {
@@ -10,6 +11,12 @@ export const clearResults = () => {
     elements.searchResList.innerHTML = '';
     elements.searchResPages.innerHTML = '';
 
+};
+
+export const hightlightSelected = id => {
+    const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+    resultsArr.forEach(item => item.classList.remove('results__link--active'));
+    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
 };
 
 const limitRecipeTitle = (title, limit = 17) => {

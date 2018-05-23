@@ -2,6 +2,7 @@ import '../assets/styles/index.scss';
 
 import {elements, renderLoader, clearLoader} from './views/base';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 
 import Search from './models/Search';
 import Recipe from './models/Recipe';
@@ -56,7 +57,12 @@ const controlRecipe = async () => {
     const id = window.location.hash.replace('#', '');
     if(id){
         //prepare ui to changes
-
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
+        if(state.search){
+            searchView.hightlightSelected(id);
+        }
+        
         //create new recipe obj
         state.recipe = new Recipe(id);
 
@@ -68,7 +74,9 @@ const controlRecipe = async () => {
             state.recipe.calcServings();
             state.recipe.calcTime();
             //render recipe
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
+            //console.log(state.recipe);
         } catch(error){
             console.log(error);
         }
