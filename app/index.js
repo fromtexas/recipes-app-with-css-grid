@@ -1,17 +1,21 @@
 import '../assets/styles/index.scss';
 
 import {elements, renderLoader, clearLoader} from './views/base';
+
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Likes from './models/Likes';
 
 //global state of the app
 const state = {};
-
+state.likes = new Likes();
+likesView.toggleLikeMenu(state.likes.getNumLikes());
 
 //search controller
 
@@ -77,7 +81,7 @@ const controlRecipe = async () => {
             state.recipe.calcTime();
             //render recipe
             clearLoader();
-            recipeView.renderRecipe(state.recipe);
+            recipeView.renderRecipe(state.recipe, state.likes.isLiked(state.recipe.id));
             //console.log(state.recipe);
         } catch(error){
             console.log(error);
@@ -113,6 +117,32 @@ elements.shopping.addEventListener('click', e => {
     
 });
 
+//likes controller
+
+const controlLikes = () => {
+    if(!state.likes){
+        state.likes = new Likes();
+    }
+
+    if(!state.likes.isLiked(state.recipe.id)){
+        const newLike = state.likes.addLike(
+            state.recipe.id, 
+            state.recipe.title, 
+            state.recipe.author, 
+            state.recipe.img
+        );
+        likesView.toggleLikeBtn(state.likes.isLiked(state.recipe.id));
+        likesView.renderLike(newLike);
+    }
+    else{
+        state.likes.deleteLike(state.recipe.id);
+        likesView.toggleLikeBtn(state.likes.isLiked(state.recipe.id));
+        likesView.deleteLike(state.recipe.id);
+        //console.log(state.likes);
+    }
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+};
+
 
 elements.recipe.addEventListener('click', e => {
     if(e.target.matches('.btn-decrease, .btn-decrease *')){
@@ -127,6 +157,9 @@ elements.recipe.addEventListener('click', e => {
     } 
     else if(e.target.matches('.recipe__btn--add, .recipe__btn--add *')){
         controlList();
+    }
+    else if(e.target.matches('.recipe__love, .recipe__love *')){
+        controlLikes();
     }
     //console.log(state.recipe);
 });
