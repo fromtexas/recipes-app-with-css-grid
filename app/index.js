@@ -14,8 +14,7 @@ import Likes from './models/Likes';
 
 //global state of the app
 const state = {};
-state.likes = new Likes();
-likesView.toggleLikeMenu(state.likes.getNumLikes());
+
 
 //search controller
 
@@ -144,6 +143,17 @@ const controlLikes = () => {
 };
 
 
+//restoring liked recipes
+
+window.addEventListener('load', () => {
+    state.likes = new Likes();
+    state.likes.reedStorage();
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+    state.likes.likes.forEach(likesView.renderLike);
+});
+
+
+//recipe button clicks
 elements.recipe.addEventListener('click', e => {
     if(e.target.matches('.btn-decrease, .btn-decrease *')){
         if(state.recipe.servings > 1){
