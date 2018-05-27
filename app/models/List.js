@@ -21,6 +21,10 @@ export default class List {
         this.items.splice(index, 1);
     }
 
+    deleteAllItems(){
+        this.items = [];
+    }
+
     updateCount (id, newCount) {
         this.items.find(item => item.id === id).count = newCount;
     }

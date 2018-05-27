@@ -1,5 +1,23 @@
 import {elements} from './base';
 
+export const renderDeleteAllButton = () =>{ 
+    const markup = `
+    <li class="shopping__item" data-itemid="delete">
+        <button class="btn-small recipe__btn recipe__btn--add shopping__delete-all">
+            <svg class="search__icon">
+                <use href="../../assets/img/icons.svg#icon-circle-with-cross"></use>
+            </svg>
+            <span>Delete All</span>
+        </button>
+    </li>
+    `;
+    elements.shopping.insertAdjacentHTML('beforeend', markup);
+};
+
+export const deleteAllItems = () => {
+    elements.shopping.innerHTML = '';
+};
+
 export const renderItem = item => {
     const markup = `
     <li class="shopping__item" data-itemid=${item.id}>

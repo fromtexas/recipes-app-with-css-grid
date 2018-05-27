@@ -1,3 +1,4 @@
+import toastr from 'toastr';
 import '../assets/styles/index.scss';
 
 import {elements, renderLoader, clearLoader} from './views/base';
@@ -15,7 +16,6 @@ import Likes from './models/Likes';
 //global state of the app
 const state = {};
 
-
 //search controller
 
 const controlSearch = async () => {
@@ -31,13 +31,18 @@ const controlSearch = async () => {
         searchView.clearResults();
         renderLoader(elements.searchRes);
 
-        //4. search for recepis
-        await state.search.getResults();
-
-        clearLoader();
-        //5. render results on ui
-        searchView.renderResults(state.search.result);
-
+        try {
+            //4. search for recepis
+            await state.search.getResults();
+            clearLoader();
+            //5. render results on ui
+            searchView.renderResults(state.search.result);
+        } 
+        catch (error) {
+            console.log(error);
+            toastr.error('Sorry, no response from API, try again and pray!');
+            clearLoader();
+        }
     }
 };
 
@@ -84,6 +89,8 @@ const controlRecipe = async () => {
             //console.log(state.recipe);
         } catch(error){
             console.log(error);
+            toastr.error('No response from API, pick recipe again!');
+            clearLoader();
         }
         
     }
@@ -99,6 +106,7 @@ const controlList = () => {
             const el = state.list.addItem(item.count, item.unit, item.ingredient);
             listView.renderItem(el);
         });
+        listView.renderDeleteAllButton();
     }
 };
 
@@ -112,6 +120,11 @@ elements.shopping.addEventListener('click', e => {
     else if(e.target.matches('.shopping__count-value, .shopping__count-value *')){
         const val = parseFloat(e.target.value);
         state.list.updateCount(id, val);
+    }
+    else if(e.target.matches('.shopping__delete-all, .shopping__delete-all *')){
+        state.list.deleteAllItems();
+        state.list = '';
+        listView.deleteAllItems();
     }
     
 });
