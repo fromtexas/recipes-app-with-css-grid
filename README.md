@@ -1,6 +1,8 @@
 Recipes app
 ===========
-Recipes js app with css-grid (not ready yet)
+Recipes js app with css-grid
+
+![forkify](https://image.ibb.co/n6PQFy/localhost_8080_1.png)
 
 ##  EZ Setup
 1. `git clone git@github.com:fromtexas/recipes-app-with-css-grid.git`

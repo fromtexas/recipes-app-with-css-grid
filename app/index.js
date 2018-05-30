@@ -36,7 +36,13 @@ const controlSearch = async () => {
             await state.search.getResults();
             clearLoader();
             //5. render results on ui
-            searchView.renderResults(state.search.result);
+            if(state.search.result.length === 0) {
+                toastr.warning(`${query} recipes not found`);
+                clearLoader();
+            } else {
+                searchView.renderResults(state.search.result);
+            }
+            
         } 
         catch (error) {
             console.log(error);
