@@ -1,30 +1,12 @@
+
 {
-    "env": {
-      "development": {
-        "presets": ["env", "stage-1"]
-      },
-      "production": {
-        "presets": [
-          [
-            "env",
-            {
-              "es2015": {
-                "modules": false
-              },
-              "targets": {
-                "ie": 9,
-                "uglify": true
-              }
-            }
-          ],
-          "stage-1"
-        ]
-      },
-      "test": {
-        "presets": [
-          "env",
-          "stage-1"
-        ]
+  "presets": [
+    [
+      "env", {
+        "targets": {
+          "node": "current"
+        }
       }
-    }
+    ]
+  ]
 }

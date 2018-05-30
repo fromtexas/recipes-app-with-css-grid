@@ -20,9 +20,7 @@ const GLOBALS = {
 module.exports = {
     target: 'web',
     mode: 'production',
-    entry: {
-        bundle: path.join(dirApp, 'index')
-    },
+    entry: path.join(dirApp, 'index'),
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].[chunkhash].js'
