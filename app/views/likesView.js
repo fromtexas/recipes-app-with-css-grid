@@ -3,7 +3,6 @@ import {limitRecipeTitle} from './searchView'
 
 export const toggleLikeBtn = isLiked => {
     const iconString = isLiked ? 'icon-heart' : 'icon-heart-outlined';
-    //icons.svg#icon-heart-outlined
     document.querySelector('.recipe__love use').setAttribute('href', `../../assets/img/icons.svg#${iconString}`);
 };
 

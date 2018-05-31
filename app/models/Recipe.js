@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {key, proxy} from '../config';
 
+//choosed recipe model
+
 export default class Recipe {
     constructor(id){
         this.id = id;

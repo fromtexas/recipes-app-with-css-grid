@@ -1,5 +1,7 @@
 import uniqid from 'uniqid';
 
+//products list model
+
 export default class List {
     constructor () {
         this.items = [];  
